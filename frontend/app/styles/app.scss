@@ -1,0 +1,41 @@
+$primary: "light-blue" !default;
+$accent: "pink" !default;
+$warn: "red" !default;
+$background: "grey" !default;
+$link: "pink" !default;
+
+$dark: true !default;
+$default-color: '500' !default;
+
+$foreground: "foreground-light" !default;
+
+$base-background-color: black !default;
+$base-color: rgba(255, 255, 255, 1.0) !default;
+
+@import 'ember-paper';
+
+.splash-outer--container {
+  background: linear-gradient(rgba(44, 62, 80, 0.65), rgba(52, 152, 219, 0.65)),
+        url("https://hd.unsplash.com/photo-1461784180009-21121b2f204c") no-repeat fixed center;
+  background-size: cover;
+  color: #fff;
+  padding-top: 25vh;
+  padding-bottom: 25vh;
+}
+
+.splash-inner--container {
+  max-width: 624px;
+  margin: auto;
+
+  md-content {
+    background: none;
+  }
+}
+
+md-input-container.md-default-theme .md-input, md-input-container .md-input {
+  color: white;
+}
+
+md-content.md-default-theme, md-content {
+  color: white;
+}

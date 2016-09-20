@@ -1,0 +1,24 @@
+<div class="splash-inner--container">
+  {{#paper-content class="md-padding centered-form"}}
+  <div layout="" layout-sm="column">
+    {{paper-input flex=50 label="Name" value=name onChange=(action (mut name))}}
+    {{paper-input flex=50 label="E-mail" type="email" value=email onChange=(action (mut email)) customValidations=emailValidation}}
+  </div>
+  <div layout="" layout-sm="column">
+    {{#paper-select
+      flex=40
+      disabled=disableSelect
+      placeholder="Invited by"
+      value=contact
+      onChange=(action (mut contact))
+    }}
+    {{#each contacts as |contact|}}
+    {{#paper-option value=contact}}
+    {{contact}}
+    {{/paper-option}}
+    {{/each}}
+    {{/paper-select}}
+  </div>
+  {{#paper-button raised=true}}Submit{{/paper-button}}
+  {{/paper-content}}
+</div>
