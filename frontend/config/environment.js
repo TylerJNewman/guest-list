@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   var ENV = {
-    modulePrefix: 'guest-list-frontend',
+    modulePrefix: 'frontend',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

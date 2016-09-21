@@ -164,7 +164,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   byebug
-  ember-cli-rails
+  ember-cli-rails (~> 0.8.0)
   listen (~> 3.0.5)
   pg (~> 0.18)
   pry
