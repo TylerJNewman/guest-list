@@ -1,6 +1,13 @@
-{{#paper-content class="md-whiteframe-z1 list-demo"}}
+{{paper-autocomplete
+  minLength=0
+  placeholder="Type e.g. John, Doe, etc."
+  source=dataFromPromise
+  lookupKey="name"
+  model=user
+  cache-miss="updateFilter"}}
+<!-- {{#paper-content class="md-whiteframe-z1 list-demo"}}
   {{#paper-list}}
-    {{#each users as |user|}}
+    {{#each dataFromPromise as |user|}}
       {{#paper-item class="md-3-line"}}
           <div class="md-list-item-text">
               <h3>{{user.name}}</h3>
@@ -8,4 +15,20 @@
       {{/paper-item}}
     {{/each}}
   {{/paper-list}}
-{{/paper-content}}
+{{/paper-content}} -->
+<table id="list" class="mdl-data-table" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact</th>
+            </tr>
+        </thead>
+        <tbody>
+          {{#each dataFromPromise as |user|}}
+            <tr>
+              <td>{{user.name}}</td>
+              <td>{{user.contact}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+    </table>
