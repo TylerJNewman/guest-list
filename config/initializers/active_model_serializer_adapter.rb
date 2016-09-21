@@ -1,2 +1,2 @@
-ActiveModelSerializers.config.adapter = :json
-ActiveModelSerializers.config.key_tranform = :dash
+ActiveModelSerializers.config.adapter = :json_api
+ActiveModelSerializers.config.key_transform = :dash

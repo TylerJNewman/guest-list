@@ -1,24 +1,40 @@
-<div class="splash-inner--container">
-  {{#paper-content class="md-padding centered-form"}}
-  <div layout="" layout-sm="column">
-    {{paper-input flex=50 label="Name" value=name onChange=(action (mut name))}}
-    {{paper-input flex=50 label="E-mail" type="email" value=email onChange=(action (mut email)) customValidations=emailValidation}}
+{{#unless submitted}}
+{{#paper-form as |form|}}
+  <div class="splash-inner--container">
+    {{#paper-content class="md-padding centered-form"}}
+    <div layout="" layout-sm="column">
+      {{paper-input flex=50
+        label="Name"
+        value=name
+        onChange=(action (mut name))
+        required=required
+        errorMessages=(hash
+         required="Whoops, forgot your name for the guestlist...")
+      }}
+      {{paper-input flex=50 label="E-mail" type="email" value=email onChange=(action (mut email)) customValidations=emailValidation}}
+    </div>
+    <div layout="" layout-sm="column">
+      {{#paper-select
+        flex=40
+        disabled=disableSelect
+        placeholder="Invited by"
+        value=contact
+        required=required
+        onChange=(action (mut contact))
+      }}
+        {{#each contacts as |contact|}}
+          {{#paper-option value=contact}}
+            {{contact}}
+          {{/paper-option}}
+        {{/each}}
+      {{/paper-select}}
+    </div>
+    {{#paper-button class="contact-form--submit" disabled=form.isInvalid onClick=(action "submit") raised=true}}Submit{{/paper-button}}
+    {{/paper-content}}
   </div>
-  <div layout="" layout-sm="column">
-    {{#paper-select
-      flex=40
-      disabled=disableSelect
-      placeholder="Invited by"
-      value=contact
-      onChange=(action (mut contact))
-    }}
-    {{#each contacts as |contact|}}
-    {{#paper-option value=contact}}
-    {{contact}}
-    {{/paper-option}}
-    {{/each}}
-    {{/paper-select}}
-  </div>
-  {{#paper-button raised=true}}Submit{{/paper-button}}
+{{/paper-form}}
+{{else}}
+  {{#paper-content}}
+    Thank you for adding your name to the guest list.  See you at the best halloween party ever!
   {{/paper-content}}
-</div>
+{{/unless}}
