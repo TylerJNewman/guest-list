@@ -1,7 +1,7 @@
 {{paper-autocomplete
   minLength=0
   placeholder="Type e.g. John, Doe, etc."
-  source=dataFromPromise
+  source=sortedListData
   lookupKey="name"
   model=user
   cache-miss="updateFilter"}}
@@ -19,13 +19,28 @@
 <table id="list" class="mdl-data-table" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th class="mdl-data-table__cell--non-numeric sorting">Name</th>
-                <th class="mdl-data-table__cell--non-numeric sorting">Contact</th>
-                <th class="mdl-data-table__cell--non-numeric sorting">Date Submitted</th>
+                <th class="mdl-data-table__cell--non-numeric sorting">
+                  {{#paper-item onClick=""}}
+                    <p>Name</p>
+                    {{paper-switch class="md-secondary" value=reverseSort onChange=(action (mut reverseSort)) size='18'}}
+                  {{/paper-item}}
+                </th>
+                <th class="mdl-data-table__cell--non-numeric sorting">
+                  {{#paper-item onClick=""}}
+                    <p>Contact</p>
+                    {{paper-switch class="md-secondary" value=reverseSort onChange=(action (mut reverseSort)) size='18'}}
+                  {{/paper-item}}
+                </th>
+                <th class="mdl-data-table__cell--non-numeric sorting">
+                  {{#paper-item onClick=""}}
+                    <p>Date Submitted</p>
+                    {{paper-switch class="md-secondary" value=reverseSort onChange=(action (mut reverseSort)) size='18'}}
+                  {{/paper-item}}
+                </th>
             </tr>
         </thead>
         <tbody>
-          {{#each dataFromPromise as |user|}}
+          {{#each sortedListData as |user|}}
             <tr>
               <td class="mdl-data-table__cell--non-numeric">{{user.name}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{user.contact}}</td>

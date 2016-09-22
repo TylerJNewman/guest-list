@@ -57,3 +57,20 @@ md-select.md-default-theme .md-select-value, md-select .md-select-value {
     background-color: transparent;
     text-align: center;
 }
+
+// .md-button.md-icon-button {
+//     height: 36px;
+//     position: relative;
+//     top: 3px;
+// }
+//
+// md-icon.paper-icon.md-font.material-icons.md-default-theme {
+//   position: relative;
+//   top: -3px;
+// }
+
+md-list-item.md-no-proxy, md-list-item .md-no-style {
+  padding: 0px 16px;
+  margin-top: 8px;
+  margin-left: -16px;
+}

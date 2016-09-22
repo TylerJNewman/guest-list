@@ -6,7 +6,7 @@ export default Ember.Component.extend({
 
   filterText: '',
 
-  dataFromPromise: Ember.computed('filterText', function () {
+  listData: Ember.computed('filterText', function () {
     let users = this.get('users');
     let filterText = this.get('filterText').toLowerCase();
     if (filterText === '') {
@@ -18,9 +18,21 @@ export default Ember.Component.extend({
     });
   }),
 
+  sortedListData: Ember.computed.sort('listData', 'sortDefinition'),
+  sortBy: 'createdAt', // default sort by date
+  reverseSort: false, // default sort in ascending order
+  sortDefinition: Ember.computed('sortBy', 'reverseSort', function () {
+    let sortOrder = this.get('reverseSort') ? 'desc' : 'asc';
+    return [`${this.get('sortBy')}:${sortOrder}`];
+  }),
+
   actions: {
       updateFilter(str) {
         this.set('filterText', str);
+      },
+
+      sortBy(name) {
+        this.set('sortBy', name);
       },
     },
 });
