@@ -4,5 +4,5 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   email: DS.attr('string'),
   contact: DS.attr('string'),
-  createdAt: DS.attr('string'),
+  createdAt: DS.attr('date'),
 });
