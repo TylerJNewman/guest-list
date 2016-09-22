@@ -20,21 +20,21 @@
         <thead>
             <tr>
                 <th class="mdl-data-table__cell--non-numeric sorting">
-                  {{#paper-item onClick=""}}
+                  {{#paper-item onClick=(action "sortBy" "name")}}
                     <p>Name</p>
-                    {{paper-switch class="md-secondary" value=reverseSort onChange=(action (mut reverseSort)) size='18'}}
+                    {{paper-switch class="md-secondary" value=reverseSortName onChange=(action "toggleSort" "name") size='18'}}
                   {{/paper-item}}
                 </th>
                 <th class="mdl-data-table__cell--non-numeric sorting">
-                  {{#paper-item onClick=""}}
+                  {{#paper-item onClick=(action "sortBy" "contact")}}
                     <p>Contact</p>
-                    {{paper-switch class="md-secondary" value=reverseSort onChange=(action (mut reverseSort)) size='18'}}
+                    {{paper-switch class="md-secondary" value=reverseSortContact onChange=(action "toggleSort" "contact") size='18'}}
                   {{/paper-item}}
                 </th>
                 <th class="mdl-data-table__cell--non-numeric sorting">
-                  {{#paper-item onClick=""}}
+                  {{#paper-item onClick=(action "sortBy" "createdAt")}}
                     <p>Date Submitted</p>
-                    {{paper-switch class="md-secondary" value=reverseSort onChange=(action (mut reverseSort)) size='18'}}
+                    {{paper-switch class="md-secondary" value=reverseSortCreatedAt onChange=(action "toggleSort" "createdAt") size='18'}}
                   {{/paper-item}}
                 </th>
             </tr>
@@ -44,7 +44,7 @@
             <tr>
               <td class="mdl-data-table__cell--non-numeric">{{user.name}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{user.contact}}</td>
-              <td class="mdl-data-table__cell--non-numeric">{{moment-format user.createdAt "MMM DD hh:mm"}}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{moment-format user.createdAt 'MM/DD/YY, h:mm a'}}</td>
             </tr>
           {{/each}}
         </tbody>
