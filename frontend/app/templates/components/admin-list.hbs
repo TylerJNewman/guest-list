@@ -1,51 +1,38 @@
-{{paper-autocomplete
-  minLength=0
-  placeholder="Type e.g. John, Doe, etc."
-  source=sortedListData
-  lookupKey="name"
-  model=user
-  cache-miss="updateFilter"}}
-<!-- {{#paper-content class="md-whiteframe-z1 list-demo"}}
-  {{#paper-list}}
-    {{#each dataFromPromise as |user|}}
-      {{#paper-item class="md-3-line"}}
-          <div class="md-list-item-text">
-              <h3>{{user.name}}</h3>
-          </div>
-      {{/paper-item}}
-    {{/each}}
-  {{/paper-list}}
-{{/paper-content}} -->
-<table id="list" class="mdl-data-table" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th class="mdl-data-table__cell--non-numeric sorting">
-                  {{#paper-item onClick=(action "sortBy" "name")}}
-                    <p>Name</p>
-                    {{paper-switch class="md-secondary" value=reverseSortName onChange=(action "toggleSort" "name") size='18'}}
-                  {{/paper-item}}
-                </th>
-                <th class="mdl-data-table__cell--non-numeric sorting">
-                  {{#paper-item onClick=(action "sortBy" "contact")}}
-                    <p>Contact</p>
-                    {{paper-switch class="md-secondary" value=reverseSortContact onChange=(action "toggleSort" "contact") size='18'}}
-                  {{/paper-item}}
-                </th>
-                <th class="mdl-data-table__cell--non-numeric sorting">
-                  {{#paper-item onClick=(action "sortBy" "createdAt")}}
-                    <p>Date Submitted</p>
-                    {{paper-switch class="md-secondary" value=reverseSortCreatedAt onChange=(action "toggleSort" "createdAt") size='18'}}
-                  {{/paper-item}}
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-          {{#each sortedListData as |user|}}
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">{{user.name}}</td>
-              <td class="mdl-data-table__cell--non-numeric">{{user.contact}}</td>
-              <td class="mdl-data-table__cell--non-numeric">{{moment-format user.createdAt 'MM/DD/YY, h:mm a'}}</td>
-            </tr>
-          {{/each}}
-        </tbody>
+<div class="guest-list--container">
+  {{paper-autocomplete minLength=0 placeholder="Type e.g. John, Doe, etc." source=sortedListData lookupKey="name" model=user cache-miss="updateFilter"}}
+  <div class="scrollable">  
+    <table id="list" class="mdl-data-table" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric sorting">
+            {{#paper-item onClick=(action "sortBy" "name")}}
+            <p>Name</p>
+            {{paper-switch class="md-secondary" value=reverseSortName onChange=(action "toggleSort" "name") size='18'}}
+            {{/paper-item}}
+          </th>
+          <th class="mdl-data-table__cell--non-numeric sorting">
+            {{#paper-item onClick=(action "sortBy" "contact")}}
+            <p>Contact</p>
+            {{paper-switch class="md-secondary" value=reverseSortContact onChange=(action "toggleSort" "contact") size='18'}}
+            {{/paper-item}}
+          </th>
+          <th class="mdl-data-table__cell--non-numeric sorting">
+            {{#paper-item onClick=(action "sortBy" "createdAt")}}
+            <p>Date Submitted</p>
+            {{paper-switch class="md-secondary" value=reverseSortCreatedAt onChange=(action "toggleSort" "createdAt") size='18'}}
+            {{/paper-item}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each sortedListData as |user|}}
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">{{user.name}}</td>
+          <td class="mdl-data-table__cell--non-numeric">{{user.contact}}</td>
+          <td class="mdl-data-table__cell--non-numeric">{{moment-format user.createdAt 'MM/DD/YY, h:mm a'}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
     </table>
+  </div>
+</div>
