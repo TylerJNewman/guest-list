@@ -19,7 +19,7 @@ export default Ember.Component.extend({
   }),
 
   sortedListData: Ember.computed.sort('listData', 'sortDefinition'),
-  sortBy: 'createdAt', // default sort by date
+  sortBy: 'name', // default sort by name
   reverseSortName: false, // default sort in ascending order
   reverseSortContact: false, // default sort in ascending order
   reverseSortCreatedAt: false, // default sort in ascending order
@@ -41,7 +41,11 @@ export default Ember.Component.extend({
 
       toggleSort(name) {
         const capitalizedName = name.capitalize();
-        this.toggleProperty(`reverseSort${capitalizedName}`);
+        const currentSortBy = this.get('sortBy');
+        if (currentSortBy === name) {
+          this.toggleProperty(`reverseSort${capitalizedName}`);
+        }
+
         this.set('sortBy', name);
       },
     },
