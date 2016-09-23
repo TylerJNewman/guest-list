@@ -145,4 +145,15 @@ table.md-table {
   .md-button.md-icon-button {
     height: 64px;
   }
+
+  button.paper-button {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .md-ripple-container {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
 }
