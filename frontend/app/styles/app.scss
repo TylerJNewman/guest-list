@@ -40,9 +40,6 @@ label {
 }
 
 .splash-outer--container {
-  max-width: 624px;
-  margin: auto;
-
   md-content {
     background: none;
   }
@@ -146,6 +143,6 @@ table.md-table {
     height: 64px;
   }
   .md-button.md-icon-button {
-    height: 64px; 
+    height: 64px;
   }
 }
