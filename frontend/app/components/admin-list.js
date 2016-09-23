@@ -48,5 +48,21 @@ export default Ember.Component.extend({
 
         this.set('sortBy', name);
       },
+
+      deleteSelected() {
+        Promise.resolve()
+        .then(() => {
+          const users = this.get('users');
+          return users.filter(function (user) {
+            return user.get('checked');
+          });
+        })
+        .then((selectedUsers) => {
+          selectedUsers.forEach((d) => d.destroyRecord());
+        })
+        .catch((err) => {
+          console.log('err deleting User', err);
+        });
+      },
     },
 });

@@ -6,7 +6,7 @@
         <tr>
           <th class="mdl-data-table__cell--non-numeric checkbox">
 
-              {{#paper-checkbox disabled=true onChange=null}}{{/paper-checkbox}}
+              {{#paper-checkbox disabled=false onChange=(action "deleteSelected")}}{{/paper-checkbox}}
 
           </th>
           <th class="mdl-data-table__cell--non-numeric">
