@@ -12,7 +12,7 @@ export default Ember.Component.extend({
     if (filterText === '') {
       return users;
     }
-
+    debugger;
     return users.filter(function (user) {
       return user.get('name').toLowerCase().match(filterText);
     });
