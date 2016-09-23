@@ -4,18 +4,12 @@
     <table id="list" class="mdl-data-table" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <!-- <th class="mdl-data-table__cell--non-numeric sorting">
-            {{#paper-item onClick=(action "sortBy" "name")}}
-            <p>Name</p>
-            {{#if reserveSortName}}
-              {{paper-icon "arrow downward" size=18}}
-            {{else}}
-              {{paper-icon "arrow upward" size=18}}
-            {{/if}}
-            {{paper-switch class="md-secondary" value=reverseSortName onChange=(action "toggleSort" "name") size='18'}}
-            {{/paper-item}}
-          </th> -->
-          <th class="mdl-data-table__cell--non-numeric sorting">
+          <th class="mdl-data-table__cell--non-numeric checkbox">
+
+              {{#paper-checkbox disabled=true onChange=null}}{{/paper-checkbox}}
+
+          </th>
+          <th class="mdl-data-table__cell--non-numeric">
             {{#paper-item onClick=(action "toggleSort" "name")}}
             <p>Name</p>
             {{#if reverseSortName}}
@@ -25,7 +19,7 @@
             {{/if}}
             {{/paper-item}}
           </th>
-          <th class="mdl-data-table__cell--non-numeric sorting">
+          <th class="mdl-data-table__cell--non-numeric">
             {{#paper-item onClick=(action "toggleSort" "createdAt")}}
             <p>Date Submitted</p>
             {{#if reverseSortCreatedAt}}
@@ -34,7 +28,7 @@
               {{paper-icon "arrow downward" size=18}}
             {{/if}}            {{/paper-item}}
           </th>
-          <th class="mdl-data-table__cell--non-numeric sorting">
+          <th class="mdl-data-table__cell--non-numeric">
             {{#paper-item onClick=(action "toggleSort" "contact")}}
             <p>Contact</p>
             {{#if reverseSortContact}}
@@ -48,6 +42,9 @@
       <tbody>
         {{#each sortedListData as |user|}}
         <tr>
+          <td class="mdl-data-table__cell--non-numeric checkbox">
+            {{#paper-checkbox value=user.checked onChange=(action (mut user.checked))}}{{/paper-checkbox}}
+          </td>
           <td class="mdl-data-table__cell--non-numeric">{{user.name}}</td>
           <td class="mdl-data-table__cell--non-numeric">{{moment-format user.createdAt 'MM/DD/YY, h:mm a'}}</td>
           <td class="mdl-data-table__cell--non-numeric">{{user.contact}}</td>

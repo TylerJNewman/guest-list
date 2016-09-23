@@ -83,3 +83,22 @@ thead, tbody tr {
 table {
     width:100%;
 }
+
+.mdl-data-table__cell--non-numeric.checkbox {
+  width: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+mdl-data-table.checkbox {
+    padding-left: 30px !important;
+}
+
+table md-checkbox {
+    margin: 0;
+    width: 20px;
+}
+
+th .md-container.md-ink-ripple {
+    margin-top: -11px;
+}
