@@ -27,6 +27,7 @@ export default Ember.Component.extend({
     });
   }),
 
+  displaySelected: Ember.computed.bool('usersSelected.length'),
   displayUsersSelected: Ember.computed('usersSelected', function () {
     const numberSelected = this.get('usersSelected').length;
     if (numberSelected === 1) {
@@ -62,7 +63,7 @@ export default Ember.Component.extend({
           active.classList.remove('active');
         }
         event.currentTarget.classList.add('active');
-        
+
         const capitalizedName = name.capitalize();
         const currentSortBy = this.get('sortBy');
         if (currentSortBy === name) {

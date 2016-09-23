@@ -1,16 +1,19 @@
 <div class="guest-list--container">
-  {{#paper-toolbar}}
-    {{#paper-toolbar-tools}}
-    <div class="">
-      {{displayUsersSelected}}
-    </div>
-      <span class="flex"></span>
-      {{#paper-button iconButton=true onClick=(action "openDialogWithParent")}}
-        {{paper-icon "delete"}}
-      {{/paper-button}}
-    {{/paper-toolbar-tools}}
-  {{/paper-toolbar}}
-  {{paper-autocomplete minLength=0 placeholder="Type e.g. John, Doe, etc." source=sortedListData lookupKey="name" model=user cache-miss="updateFilter"}}
+      {{#if displaySelected}}
+        {{#paper-toolbar}}
+          {{#paper-toolbar-tools}}
+            <div class="">
+              {{displayUsersSelected}}
+            </div>
+            <span class="flex"></span>
+            {{#paper-button iconButton=true onClick=(action "openDialogWithParent")}}
+              {{paper-icon "delete"}}
+            {{/paper-button}}
+          {{/paper-toolbar-tools}}
+        {{/paper-toolbar}}
+      {{else}}
+        {{paper-autocomplete minLength=0 placeholder="Type e.g. John, Doe, etc." source=sortedListData lookupKey="name" model=user cache-miss="updateFilter"}}
+      {{/if}}
   <div class="scrollable">
     <table id="list" class="mdl-data-table" cellspacing="0" width="100%">
       <thead>
@@ -35,7 +38,7 @@
             {{/if}}
           </th>
           <th class="mdl-data-table__cell--non-numeric" onClick={{action "toggleSort" "contact"}}>
-            <span>Host Contact</span>
+            <span>Host</span>
             {{#if reverseSortContact}}
               {{paper-icon "arrow upward" size=18}}
             {{else}}
