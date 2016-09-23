@@ -1,41 +1,46 @@
 <div class="guest-list--container">
+  {{#paper-toolbar}}
+    {{#paper-toolbar-tools}}
+    <div class="">
+      {{displayUsersSelected}}
+    </div>
+      <span class="flex"></span>
+      {{#paper-button iconButton=true onClick=(action "openDialogWithParent")}}
+        {{paper-icon "delete"}}
+      {{/paper-button}}
+    {{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
   {{paper-autocomplete minLength=0 placeholder="Type e.g. John, Doe, etc." source=sortedListData lookupKey="name" model=user cache-miss="updateFilter"}}
   <div class="scrollable">
     <table id="list" class="mdl-data-table" cellspacing="0" width="100%">
       <thead>
         <tr>
           <th class="mdl-data-table__cell--non-numeric checkbox">
-
-              {{#paper-checkbox disabled=false onChange=(action "deleteSelected")}}{{/paper-checkbox}}
-
+            {{#paper-checkbox disabled=true onChange=null}}{{/paper-checkbox}}
           </th>
-          <th class="mdl-data-table__cell--non-numeric">
-            {{#paper-item onClick=(action "toggleSort" "name")}}
-            <p>Name</p>
+          <th class="mdl-data-table__cell--non-numeric active" onClick={{action "toggleSort" "name"}}>
+            <span>Name</span>
             {{#if reverseSortName}}
               {{paper-icon "arrow upward" size=18}}
             {{else}}
               {{paper-icon "arrow downward" size=18}}
             {{/if}}
-            {{/paper-item}}
           </th>
-          <th class="mdl-data-table__cell--non-numeric">
-            {{#paper-item onClick=(action "toggleSort" "createdAt")}}
-            <p>Date Submitted</p>
+          <th class="mdl-data-table__cell--non-numeric" onClick={{action "toggleSort" "createdAt"}}>
+            <span>Date Submitted</span>
             {{#if reverseSortCreatedAt}}
               {{paper-icon "arrow upward" size=18}}
             {{else}}
               {{paper-icon "arrow downward" size=18}}
-            {{/if}}            {{/paper-item}}
+            {{/if}}
           </th>
-          <th class="mdl-data-table__cell--non-numeric">
-            {{#paper-item onClick=(action "toggleSort" "contact")}}
-            <p>Contact</p>
+          <th class="mdl-data-table__cell--non-numeric" onClick={{action "toggleSort" "contact"}}>
+            <span>Host Contact</span>
             {{#if reverseSortContact}}
               {{paper-icon "arrow upward" size=18}}
             {{else}}
               {{paper-icon "arrow downward" size=18}}
-            {{/if}}            {{/paper-item}}
+            {{/if}}
           </th>
         </tr>
       </thead>
@@ -54,3 +59,31 @@
     </table>
   </div>
 </div>
+
+{{#if showDialogWithParent}}
+  {{#paper-dialog onClose=(action "closeDialogWithParent" "cancel") parent=".guest-list--container" origin=dialogOrigin clickOutsideToClose=true}}
+    <form>
+      {{#paper-toolbar}}
+        <div class="md-toolbar-tools">
+          <h2>Delete</h2>
+          <span class="flex"></span>
+          {{#paper-button iconButton=true onClick=(action "closeDialogWithParent" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+        </div>
+      {{/paper-toolbar}}
+
+      {{#paper-dialog-content}}
+        <div style="max-width:800px;max-height:810px;">
+          <p>
+            Are you sure you want to DELETE the selected guests?
+          </p>
+        </div>
+      {{/paper-dialog-content}}
+
+      {{#paper-dialog-actions class="layout-row"}}
+        <span class="flex"></span>
+        {{#paper-button onClick=(action "closeDialogWithParent" "cancel")}}Cancel{{/paper-button}}
+        {{#paper-button onClick=(action "closeDialogWithParent" "ok")}}OK{{/paper-button}}
+      {{/paper-dialog-actions}}
+    </form>
+  {{/paper-dialog}}
+{{/if}}

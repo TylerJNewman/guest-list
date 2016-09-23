@@ -39,8 +39,17 @@ label {
     color: white !important;
 }
 
-span {
+.splash-outer--container {
+  max-width: 624px;
+  margin: auto;
+
+  md-content {
+    background: none;
+  }
+
+  span {
     color: white !important;
+  }
 }
 
 md-input-container.md-default-theme .md-input, md-input-container .md-input {
@@ -99,6 +108,29 @@ table md-checkbox {
     width: 20px;
 }
 
-th .md-container.md-ink-ripple {
-    margin-top: -11px;
+.guest-list--container md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+    color: #1e88e5;
+    font-size: 16px;
+    background-color: #e3f2fd;
+}
+
+.guest-list--container .md-toolbar-tools {
+  font-size: 16px;
+  padding: 0 25px;
+}
+
+.guest-list--container md-toolbar.md-default-theme:not(.md-menu-toolbar) md-icon, md-toolbar:not(.md-menu-toolbar) md-icon {
+  color: rgba(0,0,0,.54);
+}
+
+.guest-list--container md-autocomplete input:not(.md-input) {
+  padding: 0 25px;
+}
+
+th.mdl-data-table__cell--non-numeric.active {
+  color: rgba(0,0,0,.87);
+}
+
+table.md-table {
+  color: rgba(0,0,0,.54);
 }

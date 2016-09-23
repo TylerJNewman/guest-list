@@ -20,6 +20,22 @@ export default Ember.Component.extend({
 
   sortedListData: Ember.computed.sort('listData', 'sortDefinition'),
   sortBy: 'name', // default sort by name
+  usersSelected: Ember.computed('users.@each.checked', function () {
+    const users = this.get('users');
+    return users.filter(function (user) {
+      return user.get('checked');
+    });
+  }),
+
+  displayUsersSelected: Ember.computed('usersSelected', function () {
+    const numberSelected = this.get('usersSelected').length;
+    if (numberSelected === 1) {
+      return '1 Guest Selected';
+    } else {
+      return `${numberSelected} Guests Selected`;
+    }
+  }),
+
   reverseSortName: false, // default sort in ascending order
   reverseSortContact: false, // default sort in ascending order
   reverseSortCreatedAt: false, // default sort in ascending order
@@ -39,7 +55,14 @@ export default Ember.Component.extend({
         this.set('sortBy', name);
       },
 
-      toggleSort(name) {
+      toggleSort(name, event) {
+        event.preventDefault();
+        const active = document.querySelector('.active');
+        if(active){
+          active.classList.remove('active');
+        }
+        event.currentTarget.classList.add('active');
+        
         const capitalizedName = name.capitalize();
         const currentSortBy = this.get('sortBy');
         if (currentSortBy === name) {
@@ -52,17 +75,26 @@ export default Ember.Component.extend({
       deleteSelected() {
         Promise.resolve()
         .then(() => {
-          const users = this.get('users');
-          return users.filter(function (user) {
-            return user.get('checked');
-          });
-        })
-        .then((selectedUsers) => {
-          selectedUsers.forEach((d) => d.destroyRecord());
+          this.get('usersSelected').forEach((d) => d.destroyRecord());
         })
         .catch((err) => {
           console.log('err deleting User', err);
         });
+      },
+
+      /* Dialog with parent */
+      openDialogWithParent(event) {
+        this.set('dialogOrigin', $(event.currentTarget));
+        this.set('showDialogWithParent', true);
+      },
+
+      closeDialogWithParent(result) {
+        if (result === 'ok') {
+          this.send('deleteSelected');
+        }
+
+        this.set('result', result);
+        this.set('showDialogWithParent', false);
       },
     },
 });
