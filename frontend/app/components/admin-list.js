@@ -6,13 +6,22 @@ export default Ember.Component.extend({
 
   filterText: '',
 
+  placeholder: Ember.computed('filterText', function() {
+    const filterText = this.get('filterText');
+    if (filterText === '') {
+      return 'Search'
+    } else {
+      return filterText;
+    }
+  }),
+
   listData: Ember.computed('filterText', function () {
     let users = this.get('users');
     let filterText = this.get('filterText').toLowerCase();
     if (filterText === '') {
       return users;
     }
-    debugger;
+
     return users.filter(function (user) {
       return user.get('name').toLowerCase().match(filterText);
     });

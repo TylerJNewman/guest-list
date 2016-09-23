@@ -134,3 +134,18 @@ th.mdl-data-table__cell--non-numeric.active {
 table.md-table {
   color: rgba(0,0,0,.54);
 }
+
+.guest-list--container {
+  md-autocomplete {
+    height: 64px;
+  }
+  md-autocomplete md-autocomplete-wrap {
+    height: 64px;
+  }
+  md-autocomplete input:not(.md-input) {
+    height: 64px;
+  }
+  .md-button.md-icon-button {
+    height: 64px; 
+  }
+}

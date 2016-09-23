@@ -12,7 +12,7 @@
           {{/paper-toolbar-tools}}
         {{/paper-toolbar}}
       {{else}}
-        {{paper-autocomplete minLength=0 placeholder="Type e.g. John, Doe, etc." source=sortedListData lookupKey="name" cache-miss="updateFilter"}}
+        {{paper-autocomplete minLength=0 placeholder=placeholder source=sortedListData lookupKey="name" cache-miss="updateFilter"}}
       {{/if}}
   <div class="scrollable">
     <table id="list" class="mdl-data-table" cellspacing="0" width="100%">
