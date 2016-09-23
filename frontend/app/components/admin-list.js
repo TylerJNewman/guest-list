@@ -6,14 +6,9 @@ export default Ember.Component.extend({
 
   filterText: '',
 
-  placeholder: Ember.computed('filterText', function() {
-    const filterText = this.get('filterText');
-    if (filterText === '') {
-      return 'Search'
-    } else {
-      return filterText;
-    }
-  }),
+  placeholder: "Search",
+
+  myModel: null,
 
   listData: Ember.computed('filterText', function () {
     let users = this.get('users');
@@ -68,9 +63,10 @@ export default Ember.Component.extend({
       toggleSort(name, event) {
         event.preventDefault();
         const active = document.querySelector('.active');
-        if(active){
+        if (active) {
           active.classList.remove('active');
         }
+
         event.currentTarget.classList.add('active');
 
         const capitalizedName = name.capitalize();
