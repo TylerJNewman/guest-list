@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repo is a work in progress. 
 
-Things you may want to cover:
+Full Stack Application is built using Ember as the frontend and Rails 5 as the backend.
 
-* Ruby version
+Uses the new Rails Action Cable feature to support real time Chat.
 
-* System dependencies
+The design is inspired by Google Material Design.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+https://aqueous-bastion-16229.herokuapp.com/
+https://aqueous-bastion-16229.herokuapp.com/admin
